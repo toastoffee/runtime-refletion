@@ -1,5 +1,5 @@
 #include <iostream>
-#include "src/class_register.hpp"
+#include "src/object.hpp"
 
 
 struct MyStruct { MyStruct() {}; void func(double) {}; int data; };
@@ -10,10 +10,8 @@ MyStruct* newTestStruct(){
 
 int main() {
 
-    ClassRegister<MyStruct> classRegister;
-    classRegister.AddConstructor("test", newTestStruct);
+    float a = 1.0f;
 
-    auto s = classRegister.CreateObject("test");
-
+    auto o = Object(&a);
     return 0;
 }
