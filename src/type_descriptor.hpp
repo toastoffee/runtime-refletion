@@ -26,8 +26,29 @@ private:
     virtual ~TypeDescriptor() = default;
 
     std::string getName() const { return _name; }
-    
+
+public:
+
+
+
+    template<typename T,typename Enable = typename std::enable_if<
+        std::is_same<T, char>           ::value ||
+        std::is_same<T, std::string>    ::value ||
+        std::is_same<T, int>            ::value ||
+        std::is_same<T, unsigned int>   ::value ||
+        std::is_same<T, float>          ::value ||
+        std::is_same<T, double>         ::value >::type>
+    static TypeDescriptor* GetDescriptor()
+    {
+        return GetPrimitiveDescriptor<T>();
+    }
+
+public:
+    template<typename T>
+    static TypeDescriptor* GetPrimitiveDescriptor();
+
 };
+
 
 
 #endif //RUNTIME_REFLETION_TYPE_DESCRIPTOR_HPP
