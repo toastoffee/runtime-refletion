@@ -21,6 +21,7 @@ private:
     const char* _typeName;
     size_t _size;
 
+public:
     TypeDescriptor(const char* typeName, size_t size) : _typeName(typeName), _size(size) {}
 
     std::string getName() const { return _typeName; }
@@ -55,6 +56,8 @@ class StructTypeDescriptor : public TypeDescriptor {
     std::vector<Field> fields;
 
 public:
+
+    StructTypeDescriptor(const char *typeName, size_t size);
 
     void AddField(const char* fieldName, size_t offset, TypeDescriptor* type);
 };

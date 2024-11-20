@@ -14,11 +14,16 @@
 
 RegisterEntity &RegisterEntity::field(const char *fieldName, size_t offset, TypeDescriptor *descriptor) {
 
-
+    return *this;
 }
 
 template<typename T>
 RegisterEntity &RegisterEntity::reg(const char *typeName) {
-    return <#initializer#>;
+    auto* descriptor = new StructTypeDescriptor(typeName, sizeof(T));
+    RegisterEntity entity(descriptor);
+
+    Register::Instance()->_typeMap[typeName] = descriptor;
+
+    return entity;
 }
 
