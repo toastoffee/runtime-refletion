@@ -13,9 +13,18 @@
 #ifndef RUNTIME_REFLETION_REGISTER_HPP
 #define RUNTIME_REFLETION_REGISTER_HPP
 
+#include "utils/singleton.h"
+#include "type_descriptor.hpp"
 
-class Register
+#include <string>
+#include <map>
+
+class Register : public Singleton<Register>
 {
+private:
+    std::map<std::string, >
+
+public:
 
 };
 

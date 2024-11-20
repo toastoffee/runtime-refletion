@@ -43,4 +43,3 @@ template<>
 TypeDescriptor* TypeDescriptor::GetPrimitiveDescriptor<double>() {
     return new TypeDescriptor("double", sizeof(double));
 }
-

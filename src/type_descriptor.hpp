@@ -18,18 +18,14 @@
 
 class TypeDescriptor {
 private:
-    const char* _name;
+    const char* _typeName;
     size_t _size;
 
-    TypeDescriptor(const char* name, size_t size) : _name(name), _size(size) {}
+    TypeDescriptor(const char* typeName, size_t size) : _typeName(typeName), _size(size) {}
 
-    virtual ~TypeDescriptor() = default;
-
-    std::string getName() const { return _name; }
+    std::string getName() const { return _typeName; }
 
 public:
-
-
 
     template<typename T,typename Enable = typename std::enable_if<
         std::is_same<T, char>           ::value ||
@@ -48,6 +44,20 @@ public:
     static TypeDescriptor* GetPrimitiveDescriptor();
 
 };
+
+class StructTypeDescriptor : public TypeDescriptor {
+    class Field {
+        const char* fieldName;
+        size_t offset;
+        TypeDescriptor* type;
+    };
+
+    std::vector<Field> fields;
+
+public:
+    
+};
+
 
 
 
