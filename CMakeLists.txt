@@ -15,4 +15,8 @@ add_executable(runtime_refletion main.cpp
         src/object.cpp
         src/object.hpp
         src/register_entity.cpp
-        src/register_entity.hpp)
+        src/register_entity.hpp
+        src/register_helper.cpp
+        src/register_helper.hpp
+        src/registration.cpp
+        src/registration.hpp)
