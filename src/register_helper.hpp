@@ -25,7 +25,7 @@ private:
 public:
 
     explicit RegisterHelper(StructTypeDescriptor* structTypeDescriptor) :
-            _structTypeDescriptor(structTypeDescriptor) { }
+        _structTypeDescriptor(structTypeDescriptor) { }
 
 
 };

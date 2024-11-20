@@ -13,14 +13,22 @@
 #ifndef RUNTIME_REFLETION_REGISTRATION_HPP
 #define RUNTIME_REFLETION_REGISTRATION_HPP
 
+#include <map>
+
+#include "register_helper.hpp"
+
 namespace Reflect {
 
-    // store all reflection infos and help register class
+// store all reflection infos and help register class
 
-    class registration {
+class Registration {
 
+public:
 
-    };
+    template<typename T>
+    RegisterHelper registerClass(const char* className);
+    
+};
 
 }
 
