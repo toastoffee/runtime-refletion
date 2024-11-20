@@ -2,16 +2,14 @@
 #include "src/object.hpp"
 
 
-struct MyStruct { MyStruct() {}; void func(double) {}; int data; };
-
-MyStruct* newTestStruct(){
-    return new MyStruct();
-}
+struct MyStruct { MyStruct() {}; void func(double) {}; int data; int info;};
 
 int main() {
 
-    float a = 1.0f;
+    MyStruct a;
 
-    auto o = Object(&a);
+    MyStruct b;
+
+
     return 0;
 }
