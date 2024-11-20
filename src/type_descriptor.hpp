@@ -55,7 +55,8 @@ class StructTypeDescriptor : public TypeDescriptor {
     std::vector<Field> fields;
 
 public:
-    
+
+    void AddField(const char* fieldName, size_t offset, TypeDescriptor* type);
 };
 
 

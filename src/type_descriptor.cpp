@@ -43,3 +43,7 @@ template<>
 TypeDescriptor* TypeDescriptor::GetPrimitiveDescriptor<double>() {
     return new TypeDescriptor("double", sizeof(double));
 }
+
+void StructTypeDescriptor::AddField(const char *fieldName, size_t offset, TypeDescriptor *type) {
+
+}

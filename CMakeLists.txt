@@ -13,4 +13,6 @@ add_executable(runtime_refletion main.cpp
         src/class_register.cpp
         src/class_register.hpp
         src/object.cpp
-        src/object.hpp)
+        src/object.hpp
+        src/register_entity.cpp
+        src/register_entity.hpp)

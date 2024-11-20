@@ -22,7 +22,7 @@
 class Register : public Singleton<Register>
 {
 private:
-    std::map<std::string, >
+    std::map<std::string, TypeDescriptor> _typeMap;
 
 public:
 
