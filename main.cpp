@@ -6,7 +6,8 @@ struct MyStruct { MyStruct() {}; void func(double) {}; int data; int info;};
 
 int main() {
 
-    Reflect::Registration::registerClass<MyStruct>("MyStruct");
+    Reflect::Registration::registerClass<MyStruct>("MyStruct")
+            .field("data", )
 
 
 
