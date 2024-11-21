@@ -14,15 +14,6 @@
 
 using namespace Reflect;
 
-template<typename T>
-RegisterHelper Registration::registerClass(const char *className) {
-
-    // 1. create helper
-    auto descriptor = new StructTypeDescriptor(className, sizeof(T));
-    RegisterHelper helper(descriptor);
-
-    // 2. store type descriptor
-
-
-    return helper;
+void Registration::AddClass(const char *className, StructTypeDescriptor *descriptor) {
+    Registration::Instance()->_classMap[className] = descriptor;
 }

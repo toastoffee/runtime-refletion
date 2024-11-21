@@ -45,7 +45,9 @@ TypeDescriptor* TypeDescriptor::GetPrimitiveDescriptor<double>() {
 }
 
 void StructTypeDescriptor::AddField(const char *fieldName, size_t offset, TypeDescriptor *type) {
+    Field field{ fieldName, offset, type};
 
+    fields.push_back(field);
 }
 
 StructTypeDescriptor::StructTypeDescriptor(const char *typeName, size_t size)

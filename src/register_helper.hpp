@@ -27,8 +27,15 @@ public:
     explicit RegisterHelper(StructTypeDescriptor* structTypeDescriptor) :
         _structTypeDescriptor(structTypeDescriptor) { }
 
-
+    template<typename T>
+    RegisterHelper& field(const char* fieldName, T field);
 };
+
+    template<typename T>
+    RegisterHelper &RegisterHelper::field(const char *fieldName, T field) {
+
+
+    }
 
 }
 

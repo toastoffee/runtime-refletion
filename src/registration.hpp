@@ -21,14 +21,33 @@ namespace Reflect {
 
 // store all reflection infos and help register class
 
-class Registration {
+class Registration : Singleton<Registration> {
+public:
+
+    std::map<std::string, StructTypeDescriptor *> _classMap;
+
+    static void AddClass(const char* className, StructTypeDescriptor* descriptor);
 
 public:
 
     template<typename T>
-    RegisterHelper registerClass(const char* className);
-    
+    static RegisterHelper registerClass(const char* className);
+
 };
+
+
+    template<typename T>
+    RegisterHelper Registration::registerClass(const char *className) {
+
+        // 1. create helper
+        auto descriptor = new StructTypeDescriptor(className, sizeof(T));
+        RegisterHelper helper(descriptor);
+
+        // 2. store type descriptor
+        AddClass(className, descriptor);
+
+        return helper;
+    }
 
 }
 

@@ -47,7 +47,7 @@ public:
 };
 
 class StructTypeDescriptor : public TypeDescriptor {
-    class Field {
+    struct Field {
         const char* fieldName;
         size_t offset;
         TypeDescriptor* type;
