@@ -16,6 +16,8 @@
 #include <type_traits>
 #include <string>
 
+#include "type/utils.hpp"
+
 class TypeResolver {
 
 public:
@@ -26,14 +28,35 @@ public:
 
 template<typename T>
 std::string TypeResolver::getType() {
-    if(std::is_pointer<T>::value)
-    {
-        return "isPointer:" + getType<typename std::remove_pointer<T>::type>();
+
+    if(std::is_lvalue_reference<T>::value) {
+        return "&{" + getType<typename std::remove_reference<T>::type>() + "}";
+    }
+    else if(std::is_rvalue_reference<T>::value) {
+        return "&&{" + getType<typename std::remove_reference<T>::type>() + "}";
+    }
+    else if(std::is_const<T>::value && std::is_volatile<T>::value) {
+        return "const volatile{" + getType<
+                typename std::remove_const<
+                typename std::remove_volatile<T>::type>::type>() + "}";
+    }
+    else if(std::is_const<T>::value) {
+        return "const{" + getType<typename std::remove_const<T>::type>() + "}";
+    }
+    else if(std::is_volatile<T>::value) {
+        return "volatile{" + getType<typename std::remove_volatile<T>::type>() + "}";
+    }
+    else if(std::is_pointer<T>::value) {
+        return "*{" + getType<typename std::remove_pointer<T>::type>() + "}";
+    }
+    else if(std::is_member_pointer<T>::value) {
+        return getType<typename Reflect::member_pointer_traits_object<T>>()
+                + "::{" + getType<typename Reflect::member_pointer_traits_value<T>>() + "}";
+    }
+    else {
+        return Reflect::type_name<T>();
     }
 
-    else {
-        return "var";
-    }
 }
 
 

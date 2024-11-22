@@ -19,4 +19,8 @@ add_executable(runtime_refletion main.cpp
         src/registration.cpp
         src/registration.hpp
         src/type_resolver.cpp
-        src/type_resolver.hpp)
+        src/type_resolver.hpp
+        src/type/utils.cpp
+        src/type/utils.hpp
+        src/type/type_info.cpp
+        src/type/type_info.hpp)
