@@ -16,8 +16,6 @@
 template<class T>
 class Singleton
 {
-private:
-
 public:
     Singleton(Singleton &&)                 = delete;
     Singleton(const Singleton &)            = delete;

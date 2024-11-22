@@ -2,14 +2,13 @@
 
 #include "registration.hpp"
 
-struct MyStruct { MyStruct() {}; void func(double) {}; int data; int info;};
+#include "type_resolver.hpp"
+
+struct MyStruct { MyStruct() {}; void func(double) {}; int data; int* ptr;};
 
 int main() {
 
-    Reflect::Registration::registerClass<MyStruct>("MyStruct")
-            .field("data", )
-
-
+    std::cout << TypeResolver::getType<int**>();
 
     return 0;
 }

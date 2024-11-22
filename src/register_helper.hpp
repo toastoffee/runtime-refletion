@@ -28,11 +28,11 @@ public:
         _structTypeDescriptor(structTypeDescriptor) { }
 
     template<typename FieldType>
-    RegisterHelper& field(const char* fieldName, size_t offset, FieldType field);
+    RegisterHelper& field(const char* fieldName, size_t offset);
 };
 
     template<typename FieldType>
-    RegisterHelper& RegisterHelper::field(const char *fieldName, size_t offset, FieldType field) {
+    RegisterHelper& RegisterHelper::field(const char *fieldName, size_t offset) {
         _structTypeDescriptor->AddField(fieldName, offset, TypeDescriptor::GetDescriptor<FieldType>());
         return *this;
     }
