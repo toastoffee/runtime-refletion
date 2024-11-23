@@ -14,7 +14,7 @@
 #define RUNTIME_REFLETION_TEMPLATE_STRING_HPP
 
 #include <iostream>
-
+#include <array>
 
 //--Template String Basics
 template<char... chars>
@@ -28,6 +28,10 @@ public:
 
 template<char... chars>
 constexpr char TemplateString<chars...>::data[];
+
+//--Template String Maker
+
+
 
 
 //-- Extractor
@@ -63,6 +67,32 @@ template<char front, char... rest>
 struct PopFront<TemplateString<front, rest...>> {
     using type = TemplateString<rest...>;
 };
+
+
+
+
+//template<char... chars>
+//constexpr auto popN(TemplateString<chars...> s, size_t n) noexcept {
+//    if(n <= 0){
+//        return TemplateString<chars...>{};
+//    } else {
+//        return popN( typename PopFront<decltype(s)>::type{}, n - 1);
+//    }
+//}
+
+
+
+//template<char... chars>
+//constexpr auto popN(TemplateString<chars...> , size_t n) noexcept {
+//    if(n <= 0){
+//        return TemplateString<chars...>{};
+//    } else {
+//        return popN( typename PopFront<TemplateString<chars...>>::type{}, n - 1);
+//    }
+//}
+
+
+//-- find specific elements
 
 
 

@@ -13,7 +13,7 @@ struct MyStruct { MyStruct() {}; void func(double) {}; int data; int* ptr;};
 
 int main() {
 
-    int MyStruct::*p = &MyStruct::data;
+//    int MyStruct::*p = &MyStruct::data;
 
 //    std::cout << TypeResolver::getType<int MyStruct::*>();
 
@@ -23,6 +23,9 @@ int main() {
 
     using S1 = TemplateString<'H', 'i', '!'>;
     using S2 = TemplateString<'U'>;
+
+    auto str = PopN<S1, 2>::get();
+
 
     auto s = PopFront<S1>::type::data;
 
