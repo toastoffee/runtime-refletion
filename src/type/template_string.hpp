@@ -31,6 +31,16 @@ constexpr char TemplateString<chars...>::data[];
 
 
 //-- Extractor
+template<size_t... indices>
+struct Indices;
+
+template<typename S, typename I>
+struct Extractor;
+
+template<char... chars, size_t... indices>
+struct Extractor<TemplateString<chars...>, Indices<indices...>> {
+    static constexpr char val[] = {TemplateString<chars...>::Data()[indices]...};
+};
 
 //--Concatenate
 template<typename S1, typename S2>
@@ -53,6 +63,7 @@ template<char front, char... rest>
 struct PopFront<TemplateString<front, rest...>> {
     using type = TemplateString<rest...>;
 };
+
 
 
 #endif //RUNTIME_REFLETION_TEMPLATE_STRING_HPP
