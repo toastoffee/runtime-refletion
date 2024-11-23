@@ -54,7 +54,8 @@ std::string TypeResolver::getType() {
                 + "::{" + getType<typename Reflect::member_pointer_traits_value<T>>() + "}";
     }
     else {
-        return Reflect::type_name<T>();
+//        return Reflect::type_name<T>();
+        return "var";
     }
 
 }

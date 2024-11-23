@@ -11,10 +11,11 @@ int main() {
 
     int MyStruct::*p = &MyStruct::data;
 
-    std::cout << TypeResolver::getType<int MyStruct::*>();
+//    std::cout << TypeResolver::getType<int MyStruct::*>();
 
 //    using type = Reflect::member_pointer_traits_object<int MyStruct::*>;
 
+std::cout << Reflect::type_name<int MyStruct::*>();
 
     return 0;
 }

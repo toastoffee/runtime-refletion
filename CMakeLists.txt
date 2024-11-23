@@ -23,4 +23,6 @@ add_executable(runtime_refletion main.cpp
         src/type/utils.cpp
         src/type/utils.hpp
         src/type/type_info.cpp
-        src/type/type_info.hpp)
+        src/type/type_info.hpp
+        src/type/template_string.cpp
+        src/type/template_string.hpp)

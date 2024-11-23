@@ -15,7 +15,7 @@
 
 #include <type_traits>
 #include <string>
-
+#include <string_view>
 
 namespace Reflect{
 
@@ -26,15 +26,33 @@ namespace Reflect{
     }
 
     template<typename T>
-    std::string type_name() {
-        auto signature = function_signature<T>();
-
-        // cut off
-        int start_idx = signature.find('=', 0) + 2;
-        int end_idx = signature.find(']', 0);
-
-        return signature.substr(start_idx, end_idx - start_idx);
+    constexpr std::string_view func_signature() noexcept {
+        return std::string_view{__PRETTY_FUNCTION__ };
     }
+
+    template<typename T>
+    constexpr const char* func_signature() noexcept {
+        return __PRETTY_FUNCTION__;
+    }
+
+    template<typename T>
+    constexpr std::string_view type_name() {
+
+
+        return std::string_view{__PRETTY_FUNCTION__} ;
+    }
+
+
+//    template<typename T>
+//    std::string type_name() {
+//        auto signature = function_signature<T>();
+//
+//        // cut off
+//        int start_idx = signature.find('=', 0) + 2;
+//        int end_idx = signature.find(']', 0);
+//
+//        return signature.substr(start_idx, end_idx - start_idx);
+//    }
 
 
     // member pointer traits
